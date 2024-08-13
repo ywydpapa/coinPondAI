@@ -1,6 +1,10 @@
 from flask import Flask
 import pyupbit
-import pymysql
+from comm import dbconn
+import jwt
+import uuid
+import requests
+from urllib.parse import urlencode, unquote
 
 
 app = Flask(__name__)
