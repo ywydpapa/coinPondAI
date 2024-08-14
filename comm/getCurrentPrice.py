@@ -2,7 +2,7 @@ import time
 from datetime import datetime
 import requests
 import asyncio
-from comm import dbconn
+import dbconn
 import schedule
 
 
