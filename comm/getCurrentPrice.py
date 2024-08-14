@@ -1,7 +1,10 @@
 import time
+from datetime import datetime
 import requests
 import asyncio
 from comm import dbconn
+import schedule
+
 
 def get_tickers():  #거래종목 취득
     url = 'https://api.upbit.com/v1/market/all?isDetails=true'
@@ -32,8 +35,12 @@ def insertCprice():
     except Exception as e:
         print("현재가 취득 에러 : ",e)
     finally:
-        return "OK"
+        now = datetime.datetime.now()
+        print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
 
 
-insertCprice()
+schedule.every(15).minutes.do(insertCprice)
 
+while True:
+    schedule.run_pending()
+    time.sleep(5)
