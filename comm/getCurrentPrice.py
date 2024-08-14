@@ -35,7 +35,7 @@ def insertCprice():
     except Exception as e:
         print("현재가 취득 에러 : ",e)
     finally:
-        now = datetime.datetime.now()
+        now = datetime.now()
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
 
 
