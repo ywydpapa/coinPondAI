@@ -39,7 +39,44 @@ def insertCprice():
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
 
 
+def insertCprice5():
+    try:
+        tickers = get_tickers()
+        coinns = list()
+        for coinn in tickers:
+            if coinn["market"][:3] == "KRW":
+                coinns.append(coinn["market"])
+        coinlst = ','.join(coinns)
+        actPr = get_crp(coinlst)
+        for actP in actPr:
+            dbconn.insertCRP5(actP)
+    except Exception as e:
+        print("현재가 취득 에러 : ",e)
+    finally:
+        now = datetime.now()
+        print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
+
+
+def insertCprice30():
+    try:
+        tickers = get_tickers()
+        coinns = list()
+        for coinn in tickers:
+            if coinn["market"][:3] == "KRW":
+                coinns.append(coinn["market"])
+        coinlst = ','.join(coinns)
+        actPr = get_crp(coinlst)
+        for actP in actPr:
+            dbconn.insertCRP30(actP)
+    except Exception as e:
+        print("현재가 취득 에러 : ",e)
+    finally:
+        now = datetime.now()
+        print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
+
+schedule.every(5).minutes.do(insertCprice5)
 schedule.every(15).minutes.do(insertCprice)
+schedule.every(30).minutes.do(insertCprice30)
 
 while True:
     schedule.run_pending()
