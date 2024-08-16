@@ -33,7 +33,7 @@ def insertCprice():
         for actP in actPr:
             dbconn.insertCRP(actP)
     except Exception as e:
-        print("현재가 취득 에러 : ",e)
+        print("현재가 15분 취득 에러 : ",e)
     finally:
         now = datetime.now()
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
@@ -51,7 +51,7 @@ def insertCprice5():
         for actP in actPr:
             dbconn.insertCRP5(actP)
     except Exception as e:
-        print("현재가 취득 에러 : ",e)
+        print("현재가 5분 취득 에러 : ",e)
     finally:
         now = datetime.now()
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
@@ -69,7 +69,7 @@ def insertCprice30():
         for actP in actPr:
             dbconn.insertCRP30(actP)
     except Exception as e:
-        print("현재가 취득 에러 : ",e)
+        print("현재가 30분 취득 에러 : ",e)
     finally:
         now = datetime.now()
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
