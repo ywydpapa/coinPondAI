@@ -21,7 +21,7 @@ def get_crp(coinn): # 현재가 조회
     return response.json()
 
 
-def insertCprice():
+def insertCprice15():
     try:
         tickers = get_tickers()
         coinns = list()
@@ -31,7 +31,7 @@ def insertCprice():
         coinlst = ','.join(coinns)
         actPr = get_crp(coinlst)
         for actP in actPr:
-            dbconn.insertCRP(actP)
+            dbconn.insertCRP15(actP)
     except Exception as e:
         print("현재가 15분 취득 에러 : ",e)
     finally:
@@ -75,7 +75,7 @@ def insertCprice30():
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
 
 schedule.every(5).minutes.do(insertCprice5)
-schedule.every(15).minutes.do(insertCprice)
+schedule.every(15).minutes.do(insertCprice15)
 schedule.every(30).minutes.do(insertCprice30)
 
 while True:

@@ -11,7 +11,7 @@ password = os.getenv('DB_PASSWD')
 dbase = os.getenv('DB_NAME')
 
 
-def insertCRP(crp):
+def insertCRP15(crp):
     try:
         db01 = pymysql.connect(host=host, user=user, password=password, db=dbase, charset='utf8')
         cursor01 = db01.cursor()
@@ -41,7 +41,7 @@ def insertCRP(crp):
         d24 = crp["lowest_52_week_price"]
         d25 = crp["lowest_52_week_date"]
         d26 = crp["timestamp"]
-        sql = ("INSERT INTO activePrice (market,trade_date,trade_time,trade_date_kst,trade_time_kst,trade_timestamp,opening_price,high_price,low_price,trade_price,prev_closing_price,changeP,change_price,change_rate,signed_change_price,signed_change_rate,trade_volume,acc_trade_price,acc_trade_price_24h,acc_trade_volume,acc_trade_volume_24h,highest_52_week_price,highest_52_week_date,lowest_52_week_price,lowest_52_week_date,timestamp) "
+        sql = ("INSERT INTO activePrice15 (market,trade_date,trade_time,trade_date_kst,trade_time_kst,trade_timestamp,opening_price,high_price,low_price,trade_price,prev_closing_price,changeP,change_price,change_rate,signed_change_price,signed_change_rate,trade_volume,acc_trade_price,acc_trade_price_24h,acc_trade_volume,acc_trade_volume_24h,highest_52_week_price,highest_52_week_date,lowest_52_week_price,lowest_52_week_date,timestamp) "
            "values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
         cursor01.execute(sql,(d01,d02,d03,d04,d05,d06,d07,d08,d09,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26))
         db01.commit()
