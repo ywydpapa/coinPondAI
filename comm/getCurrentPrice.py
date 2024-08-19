@@ -75,8 +75,6 @@ def insertCprice30():
         print("Insert Current Prices at ", now.strftime("%Y-%m-%d %H:%M:%S"))
 
 schedule.every(5).minutes.do(insertCprice5)
-schedule.every(15).minutes.do(insertCprice15)
-schedule.every(30).minutes.do(insertCprice30)
 
 while True:
     schedule.run_pending()
