@@ -13,9 +13,9 @@ secret_key = os.getenv('UPBIT_OPEN_API_SECRET_KEY')
 server_url = os.getenv('UPBIT_OPEN_API_SERVER_URL')
 
 params = {
-	'market': 'KRW-BTC',
+	'market': 'KRW-ETH',
   'states[]': ['done', 'cancel'],
-  'start_time': '2021-01-01T00:00:00+09:00',
+  'start_time': '2024-01-01T00:00:00+09:00',
 }
 query_string = unquote(urlencode(params, doseq=True)).encode("utf-8")
 
@@ -37,5 +37,6 @@ headers = {
 }
 
 res = requests.get(server_url + '/v1/orders', params=params, headers=headers)
-res.json()
-print(res.json())
+
+for rr in res.json():
+    print(rr)

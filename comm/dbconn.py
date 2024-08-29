@@ -101,3 +101,18 @@ def insertCRP(crp,intv):
         db04.close()
     except Exception as e:
         print("현재가 ",intv, " 인서트 에러", e)
+
+
+def insertSignal(coinn,ratev,maxv,minv,sumv,sigv,intvv):
+    try:
+        db05 = pymysql.connect(host=host, user=user, password=password, db=dbase, charset='utf8')
+        cursor05 = db05.cursor()
+        sql = "update trendSignal set attrib = %s where coinName = %s"
+        cursor05.execute(sql, ("UPD00UPD00UPD00",coinn))
+        db05.commit()
+        sql = "INSERT INTO trendSignal (coinName,candInterval,maxminRate,diffMax,diffMin,diffSum,tSignal) values (%s,%s,%s,%s,%s,%s,%s)"
+        cursor05.execute(sql,(coinn,intvv,ratev,maxv,minv,sumv,sigv))
+        db05.commit()
+        db05.close()
+    except Exception as e:
+        print("트렌드 신호 인서트 에러", e)
