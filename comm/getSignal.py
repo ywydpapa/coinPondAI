@@ -10,7 +10,7 @@ def getsignal(coinn):
     closes = candle["close"]
     highs = candle["high"]
     lows = candle["low"]
-    rate240 = round(max(highs) - min(lows) / min(closes) * 100,3)
+    rate240 = round((max(highs) - min(lows)) / min(closes) * 100,3)
     opens180 = candle["open"][60:]
     closes180 = candle["close"][60:]
     highs180 = candle["high"][60:]
@@ -72,7 +72,6 @@ def getSignals():
     coins = pyupbit.get_tickers(fiat="KRW")
     try:
         for coin in coins:
-            print(coin)
             getsignal(coin)
             time.sleep(0.1)
     except Exception as e:
