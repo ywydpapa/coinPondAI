@@ -30,7 +30,7 @@ def getsignal(coinn):
     sigv15 = round(sum(rate15), 2) / max(rate15)
     sigv10 = round(sum(rate10), 2) / max(rate10)
     sigv5 = round(sum(rate5), 2) / max(rate5)
-    dbconn.insertSignal(coinn,ratv,maxv,minv,sumv,sigv60,1)
+    dbconn.insertSignal(coinn,ratv,maxv,minv,sumv,sigv60,sigv30, sigv15, sigv10, sigv5,60)
 
 
 def getSignals():
